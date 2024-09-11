@@ -1,16 +1,13 @@
 package com.is;
 
+public class ShortBook {
 
-
-public class Book {
     private String title;
     private String author;
     private String genere;
-    private int quantity;
-    private double depositAmount;
-    private double rentalCost;
+    
     //Constructor
-    public Book(String title, String author, String genere, int quantity, double depositAmount, double rentalCost) {
+    public ShortBook(String title, String author, String genere) {
         this.title = title;
         if(validateString(author)){
             this.author = author;
@@ -22,9 +19,7 @@ public class Book {
         } else {
             throw new IllegalArgumentException("Genre name is invalid.");
         }
-        this.quantity =validateNumberField(quantity);
-        this.depositAmount =validateNumberField(depositAmount);
-        this.rentalCost = validateNumberField(rentalCost);
+        
     }
     //Getters and setters
     public String getTitle() {
@@ -53,57 +48,21 @@ public class Book {
             throw new IllegalArgumentException("Genre name is invalid.");
         }
     }
-    public int getQuantity() {
-        return quantity;
-    }
-    public void setQuantity(int quantity) {
-        this.quantity =validateNumberField(quantity);
-    }
-    public double getDepositAmount() {
-        return depositAmount;
-    }
-    public void setDepositAmount(double depositAmount) {
-        this.depositAmount =validateNumberField(depositAmount);
-    }
-    public double getRentalCost() {
-        return rentalCost;
-    }
-    public void setRentalCost(double rentalCost) {
-        this.rentalCost = validateNumberField(rentalCost);
-    }
+   
     //toString method
     @Override
     public String toString() {
         return "Book{" +
                 "title='" + title + '\'' +
                 ", author='" + author + '\'' +
-                ", genere='" + genere + '\'' +
-                ", quantity=" + quantity +
-                ", depositAmount=" + depositAmount +
-                ", rentalCost=" + rentalCost +
-                '}';
-    }
-    public String shortInfo() {
-        return 
-                "title='" + title + '\'' +
-                ", author='" + author + '\'' +
-                ", genere='" + genere + '\'';
+                ", genere='" + genere + '\''+"}";
                 
     }
+    
    
     //validate method
-    public static int validateNumberField(int number) {
-        if (number < 0) {
-            throw new IllegalArgumentException("Cannot be negative");
-        }
-        return number;
-    }
-    public static double validateNumberField(double number) {
-        if (number < 0) {
-            throw new IllegalArgumentException("Cannot be negative");
-        }
-        return number;
-    }
+   
+    
     public static boolean validateString(String str) {
         for (int i = 0; i < str.length(); i++) {
             char ch = str.charAt(i);
