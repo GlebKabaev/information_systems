@@ -38,7 +38,7 @@ public class Book extends ShortBook {
     @Override
     public String toString() {
         
-        return super.toString()+
+        return super.toString().replaceAll("}", "")+
                 ", quantity=" + quantity +
                 ", depositAmount=" + depositAmount +
                 ", rentalCost=" + rentalCost +
