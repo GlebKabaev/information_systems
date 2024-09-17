@@ -21,6 +21,37 @@ public class ShortBook {
         }
         
     }
+    public ShortBook(String jsonData) {
+        // Парсим строку вручную
+        String[] parts = jsonData.replace("{", "").replace("}", "").replace("\"", "").split(",");
+        
+        for (String part : parts) {
+            String[] pair = part.split(":");
+            String key = pair[0].trim();
+            String value = pair[1].trim();
+
+            switch (key) {
+                case "title":
+                    this.title = value;
+                    break;
+                case "author":
+                    if (validateString(value)) {
+                        this.author = value;
+                    } else {
+                        throw new IllegalArgumentException("Author name is invalid.");
+                    }
+                    break;
+                case "genere":
+                    if (validateString(value)) {
+                        this.genere = value;
+                    } else {
+                        throw new IllegalArgumentException("Genre name is invalid.");
+                    }
+                    break;
+            }
+        }
+    }
+
     //Getters and setters
     public String getTitle() {
         return title;

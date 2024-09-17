@@ -14,6 +14,50 @@ public class Book extends ShortBook {
         this.depositAmount =validateNumberField(depositAmount);
         this.rentalCost = validateNumberField(rentalCost);
     }
+    public Book(String jsonData) {
+        super(jsonData);
+        // Убираем фигурные скобки и разделяем строку по запятым
+        String[] parts = jsonData.replace("{", "").replace("}", "").replace("\"", "").split(",");
+        
+        //String title = null, author = null, genere = null;
+        
+        int quantity = 0;
+        double depositAmount = 0.0, rentalCost = 0.0;
+
+        for (String part : parts) {
+            // Каждая часть делится на ключ и значение
+            String[] pair = part.split(":");
+            String key = pair[0].trim();
+            String value = pair[1].trim();
+
+            switch (key) {
+                // case "title":
+                //     title = value;
+                //     break;
+                // case "author":
+                //     author = value;
+                //     break;
+                // case "genere":
+                //     genere = value;
+                //     break;
+                case "quantity":
+                    quantity = Integer.parseInt(value);
+                    break;
+                case "depositAmount":
+                    depositAmount = Double.parseDouble(value);
+                    break;
+                case "rentalCost":
+                    rentalCost = Double.parseDouble(value);
+                    break;
+            }
+    }
+
+    this.quantity = validateNumberField(quantity);
+    this.depositAmount = validateNumberField(depositAmount);
+    this.rentalCost = validateNumberField(rentalCost);
+    
+}
+
     //Getters and setters
     
     public int getQuantity() {
