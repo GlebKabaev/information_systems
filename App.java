@@ -1,6 +1,5 @@
 package com.is;
 import java.io.IOException;
-import com.is.Book_rep_json;
 public class App {
     public static void main(String[] args) {
         // Book book1 = new Book("Aurora","Michel de Port","Dramma",2,2.33,0.5);
@@ -22,6 +21,19 @@ public class App {
             // Парсинг содержимого JSON-файла в объект Book
             Book book2 = Book_rep_json.fromJson(jsonContent);
             System.out.println(book2);
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        try {
+            // Чтение данных из файла
+            
+
+            // Создание нового объекта и запись его в файл
+            Book newBook = new Book("Clean Code", "Robert Martin", "Programming", 10, 30.0, 4.99);
+            String outputFilePath = "/home/gleb/java/spring7AOP/demo/src/main/java/com/is/book2.json"; // Укажи путь для записи нового JSON-файла
+            Book_rep_json.writeJsonToFile(newBook, outputFilePath);
+            System.out.println("Данные записаны в файл: " + outputFilePath);
 
         } catch (IOException e) {
             e.printStackTrace();

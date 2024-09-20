@@ -88,6 +88,16 @@ public class Book extends ShortBook {
                 ", rentalCost=" + rentalCost +
                 '}';
     }
+    public String toJson() {
+        return "{\n" +
+                "\"title\": \"" + getTitle() + "\",\n" +
+                "\"author\": \"" + getAuthor() + "\",\n" +
+                "\"genere\": \"" + getGenere() + "\",\n" +
+                "\"quantity\": \"" + getQuantity() + "\",\n" +
+                "\"depositAmount\": \"" + getDepositAmount() + "\",\n" +
+                "\"rentalCost\": \"" + getRentalCost() + "\"\n" +
+                "}";
+    }
     public String shortInfo() {
         return 
         super.toString();

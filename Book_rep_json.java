@@ -2,6 +2,8 @@ package com.is;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
@@ -38,5 +40,10 @@ public class Book_rep_json {
 
         return new Book(title, author,genere,quantity,depositAmount,rentalCost);
     } 
-
+    public static void writeJsonToFile(Book book, String filePath) throws IOException {
+        String jsonString = book.toJson();
+        BufferedWriter writer = new BufferedWriter(new FileWriter(filePath));
+        writer.write(jsonString);
+        writer.close();
+    }
 }
