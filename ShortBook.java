@@ -1,14 +1,17 @@
 package com.is;
 
 public class ShortBook {
-
+    private int id;
     private String title;
     private String author;
     private String genere;
     
     //Constructor
-    public ShortBook(String title, String author, String genere) {
+    public ShortBook(int id,String title, String author, String genere) {
         this.title = title;
+        if(isValidID(id)){
+            this.id = id;
+        }
         if(validateString(author)){
             this.author = author;
         } else {
@@ -31,6 +34,11 @@ public class ShortBook {
             String value = pair[1].trim();
 
             switch (key) {
+                case "id":
+                if(isValidID(Integer.parseInt(value))){
+                    this.id = Integer.parseInt(value);
+                }
+                    break;
                 case "title":
                     this.title = value;
                     break;
@@ -79,6 +87,14 @@ public class ShortBook {
             throw new IllegalArgumentException("Genre name is invalid.");
         }
     }
+    public int getId(){
+        return id;
+    }
+    public void setId(int id) {
+        if(isValidID(id)){
+            this.id = id;
+        }
+    }
    
     //toString method
     @Override
@@ -91,7 +107,7 @@ public class ShortBook {
     }
     
    
-    //validate method
+    //validate methods
    
     
     public static boolean validateString(String str) {
@@ -110,5 +126,12 @@ public class ShortBook {
                (ch >= 'а' && ch <= 'я') || 
                (ch == 'ё' || ch == 'Ё') || 
                (ch == ' ');                
+    }
+    private boolean isValidID(int id){
+        if(id>=0){
+            return(true);
+        } else {
+            throw new IllegalArgumentException("id is invalid.");
+        }
     }
 }

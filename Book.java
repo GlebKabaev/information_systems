@@ -8,8 +8,8 @@ public class Book extends ShortBook {
     private double depositAmount;
     private double rentalCost;
     //Constructor
-    public Book(String title, String author, String genere, int quantity, double depositAmount, double rentalCost) {
-        super(title, author, genere);
+    public Book(int id,String title, String author, String genere, int quantity, double depositAmount, double rentalCost) {
+        super(id,title, author, genere);
         this.quantity =validateNumberField(quantity);
         this.depositAmount =validateNumberField(depositAmount);
         this.rentalCost = validateNumberField(rentalCost);
@@ -90,6 +90,7 @@ public class Book extends ShortBook {
     }
     public String toJson() {
         return "{\n" +
+                "\"id\": \"" + getId() + "\",\n" +
                 "\"title\": \"" + getTitle() + "\",\n" +
                 "\"author\": \"" + getAuthor() + "\",\n" +
                 "\"genere\": \"" + getGenere() + "\",\n" +
