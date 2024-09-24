@@ -26,14 +26,19 @@ public class App {
         //     e.printStackTrace();
         // }
         try {
-            
-            Book book = new Book(0,"Cle Code", "Robert Martin", "Programming", 10, 30.0, 4.99);
-            Book book2 = new Book(1,"Cle Code", "Robert Martin", "Programming",1, 30.3, 4.4);
             String outputFilePath = "/home/gleb/java/spring7AOP/demo/src/main/java/com/is/books.json"; // путь для записи нового JSON-файла
-            Book_rep_json.writeJsonToFile2(book, outputFilePath);
-            Book_rep_json.writeJsonToFile2(book2, outputFilePath);
-            System.out.println("Данные записаны в файл: " + outputFilePath);
-
+            // Book book = new Book(0,"Cle Code", "Robert Martin", "Programming", 10, 30.0, 4.99);
+            // Book book2 = new Book(1,"Cle Code", "Robert Martin", "Programming",1, 30.3, 4.4);
+            // Book book3 = new Book(3,"War and peace", "Tolstoy", "Drama", 3, 30.4, 4.3);
+            
+            // Book_rep_json.writeJsonToFile2(book, outputFilePath);
+            // Book_rep_json.writeJsonToFile2(book2, outputFilePath);
+            // Book_rep_json.writeJsonToFile2(book3, outputFilePath);
+            // System.out.println("Данные записаны в файл: " + outputFilePath);
+            //System.out.println(Book_rep_json.readJsonFromFile("/home/gleb/java/spring7AOP/demo/src/main/java/com/is/books.json"));
+            // System.out.println(Book_rep_json.getBookById(outputFilePath,1));
+            Book_rep_json.deleteBookById(outputFilePath, 1);
+            // System.out.println(Book_rep_json.getBookById(outputFilePath,1));
         } catch (IOException e) {
             e.printStackTrace();
         }
