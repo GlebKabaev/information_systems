@@ -35,10 +35,10 @@ public class App {
             // Book_rep_json.writeJsonToFile2(book2, outputFilePath);
             // Book_rep_json.writeJsonToFile2(book3, outputFilePath);
             // System.out.println("Данные записаны в файл: " + outputFilePath);
-            //System.out.println(Book_rep_json.readJsonFromFile("/home/gleb/java/spring7AOP/demo/src/main/java/com/is/books.json"));
+            //System.out.println(Book_rep_json.readJsonFromFile(outputFilePath));
             // System.out.println(Book_rep_json.getBookById(outputFilePath,1));
-            Book_rep_json.deleteBookById(outputFilePath, 1);
-            // System.out.println(Book_rep_json.getBookById(outputFilePath,1));
+            //Book_rep_json.deleteBookById(outputFilePath, 1);
+             System.out.println(Book_rep_json.getBookById(outputFilePath,1));
         } catch (IOException e) {
             e.printStackTrace();
         }
