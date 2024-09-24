@@ -166,4 +166,8 @@ public class Book_rep_json {
         formattedJson.append("}");
         return formattedJson.toString();
     }
+    public static void replacement(Book book,int id,String filepath)throws IOException{
+        deleteBookById(filepath,id);
+        writeJsonToFile2(book,filepath);
+    }
 }
