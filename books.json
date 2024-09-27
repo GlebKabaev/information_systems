@@ -1,16 +1,5 @@
 [
 {
-  "id": "3",
-  "title": "War and peace",
-  "author": "Tolstoy",
-  "genere": "Drama",
-  "quantity": "3",
-  "depositAmount": "30.4",
-  "rentalCost": "4.3"
-}
-
-,
-{
 "id": "1",
 "title": "Cle Code",
 "author": "Robert Martin",
@@ -18,5 +7,14 @@
 "quantity": "1",
 "depositAmount": "30.3",
 "rentalCost": "4.4"
+},
+{
+"id": "3",
+"title": "War and peace",
+"author": "Tolstoy",
+"genere": "Drama",
+"quantity": "3",
+"depositAmount": "30.4",
+"rentalCost": "4.3"
 }
 ]

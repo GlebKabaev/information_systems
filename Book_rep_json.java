@@ -166,8 +166,60 @@ public class Book_rep_json {
         formattedJson.append("}");
         return formattedJson.toString();
     }
-    public static void replacement(Book book,int id,String filepath)throws IOException{
+    //замена
+    public static void replacement(Book newbook,int id,String filepath)throws IOException{
         deleteBookById(filepath,id);
-        writeJsonToFile2(book,filepath);
+        writeJsonToFile2(newbook,filepath);
     }
+    // Сортировка книг по полю title
+public static void sortBooksByTitle(String filePath) throws IOException {
+    String jsonString = readJsonFromFile(filePath);
+    jsonString = jsonString.trim().replaceAll("^\\[|\\]$", "");  // Убираем квадратные скобки
+    
+    String[] jsonObjects = jsonString.split("(?<=\\}),");
+    List<Book> bookList = new ArrayList<>();
+
+    // Преобразуем каждый JSON объект в объект Book
+    for (String jsonObject : jsonObjects) {
+        jsonObject = jsonObject.trim();
+        Book book = fromJson(jsonObject);
+        bookList.add(book);
+    }
+
+    // Сортируем список по полю title
+    bookList.sort(Comparator.comparing(Book::getTitle));
+
+    // Преобразуем обратно в JSON формат
+    StringBuilder sortedJsonContent = new StringBuilder("[\n");
+    for (int i = 0; i < bookList.size(); i++) {
+        sortedJsonContent.append(bookList.get(i).toJson());
+        if (i < bookList.size() - 1) {
+            sortedJsonContent.append(",\n");
+        }
+    }
+    sortedJsonContent.append("\n]");
+
+    // Записываем отсортированный JSON обратно в файл
+    try (BufferedWriter writer = new BufferedWriter(new FileWriter(filePath))) {
+        writer.write(sortedJsonContent.toString());
+    }
+}
+// Подсчет количества объектов (книг) в JSON файле
+public static int getCount(String filePath) throws IOException {
+    String jsonString = readJsonFromFile(filePath);
+    jsonString = jsonString.trim().replaceAll("^\\[|\\]$", "");  // Убираем квадратные скобки
+
+    // Если файл пуст или содержит только пустые скобки
+    if (jsonString.isEmpty()) {
+        return 0;
+    }
+
+    // Разделяем объекты по шаблону (заканчивающиеся на } с возможным пробелом)
+    String[] jsonObjects = jsonString.split("(?<=\\}),");
+
+    // Возвращаем количество объектов
+    return jsonObjects.length;
+}
+
+
 }
