@@ -45,7 +45,8 @@ public class App {
             //System.out.println( Book_rep_json.getCount(outputFilePath));
             //System.out.println(Book_rep_yaml.readYamlFromFile(outputFilePath));
             //System.out.println(Book_rep_yaml.getCount(outputFilePath));
-            Book_rep_yaml.sortBooksByTitle(outputFilePath);
+            Book_rep_yaml book_rep_yaml = new Book_rep_yaml();
+            book_rep_yaml.sortBooksByTitle(outputFilePath);
             //Book_rep_yaml.replacement(book3,3,outputFilePath);
         } catch (IOException e) {
             e.printStackTrace();

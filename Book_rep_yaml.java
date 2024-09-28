@@ -3,10 +3,10 @@ package com.is;
 import java.io.*;
 import java.util.*;
 
-public class Book_rep_yaml {
+public class Book_rep_yaml implements Book_rep{
 
     // Чтение YAML из файла
-    public static List<Map<String, String>> readYamlFromFile(String filePath) throws IOException {
+    public static List<Map<String, String>> readFromFile(String filePath) throws IOException {
         List<Map<String, String>> yamlContent = new ArrayList<>();
         try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
             Map<String, String> currentMap = null;
@@ -37,7 +37,7 @@ public class Book_rep_yaml {
     
 
     // Преобразование YAML строки в объект Book
-    public static Book fromYaml(Map<String, String> yamlMap) {
+    public static Book toBook(Map<String, String> yamlMap) {
         int id = Integer.parseInt(yamlMap.get("id"));
         String title = yamlMap.get("title");
         String author = yamlMap.get("author");
@@ -49,17 +49,17 @@ public class Book_rep_yaml {
         return new Book(id, title, author, genere, quantity, depositAmount, rentalCost);
     }
 
-    // Запись YAML в файл
-    public static void writeYamlToFile(Book book, String filePath) throws IOException {
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter(filePath))) {
-            writer.write(bookToYaml(book));
-        }
-    }
+    // // Запись YAML в файл
+    // public static void writeYamlToFile(Book book, String filePath) throws IOException {
+    //     try (BufferedWriter writer = new BufferedWriter(new FileWriter(filePath))) {
+    //         writer.write(bookToYaml(book));
+    //     }
+    // }
 
     // Запись YAML массива в файл с добавлением новых объектов
-    public static void writeYamlToFileWithAppend(Book book, String filePath) throws IOException {
-        List<Map<String, String>> yamlContent = readYamlFromFile(filePath);
-        yamlContent.add(bookToMap(book));
+    public static void writeToFile(Book book, String filePath) throws IOException {
+        List<Map<String, String>> yamlContent = readFromFile(filePath);
+        yamlContent.add(toMap(book));
 
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(filePath))) {
             for (Map<String, String> map : yamlContent) {
@@ -72,21 +72,21 @@ public class Book_rep_yaml {
     }
 
     // Получение объекта Book по ID из YAML файла
-    public static Book getBookById(String filePath, int targetId) throws IOException {
-        List<Map<String, String>> yamlContent = readYamlFromFile(filePath);
+    public  Book getBookById(String filePath, int targetId) throws IOException {
+        List<Map<String, String>> yamlContent = readFromFile(filePath);
 
         for (Map<String, String> yamlMap : yamlContent) {
             int id = Integer.parseInt(yamlMap.get("id"));
             if (id == targetId) {
-                return fromYaml(yamlMap);
+                return toBook(yamlMap);
             }
         }
         return null;  // Возвращаем null, если объект не найден
     }
 
     // Удаление книги по ID из YAML файла
-    public static void deleteBookById(String filePath, int targetId) throws IOException {
-        List<Map<String, String>> yamlContent = readYamlFromFile(filePath);
+    public  void deleteBookById(String filePath, int targetId) throws IOException {
+        List<Map<String, String>> yamlContent = readFromFile(filePath);
         List<Map<String, String>> updatedContent = new ArrayList<>();
 
         for (Map<String, String> yamlMap : yamlContent) {
@@ -121,7 +121,7 @@ public class Book_rep_yaml {
     }
 
     // Преобразование объекта Book в Map для дальнейшего использования
-    private static Map<String, String> bookToMap(Book book) {
+    private static Map<String, String> toMap(Book book) {
         Map<String, String> map = new HashMap<>();
         map.put("id", String.valueOf(book.getId()));
         map.put("title", book.getTitle());
@@ -133,18 +133,18 @@ public class Book_rep_yaml {
         return map;
     }
     // Подсчет количества объектов (книг) в YAML файле
-    public static int getCount(String filePath) throws IOException {
-    List<Map<String, String>> yamlContent = readYamlFromFile(filePath);
+    public  int getCount(String filePath) throws IOException {
+    List<Map<String, String>> yamlContent = readFromFile(filePath);
     return yamlContent.size();
     }
 // Сортировка книг по полю title
-    public static void sortBooksByTitle(String filePath) throws IOException {
-        List<Map<String, String>> yamlContent = readYamlFromFile(filePath);
+    public  void sortBooksByTitle(String filePath) throws IOException {
+        List<Map<String, String>> yamlContent = readFromFile(filePath);
         List<Book> bookList = new ArrayList<>();
 
         // Преобразуем каждый YAML объект в объект Book
         for (Map<String, String> yamlMap : yamlContent) {
-            Book book = fromYaml(yamlMap);
+            Book book = toBook(yamlMap);
             bookList.add(book);
         }
 
@@ -158,8 +158,8 @@ public class Book_rep_yaml {
             }
         }
     }
-    public static void replacement(Book newbook,int id,String filepath)throws IOException{
+    public  void replacement(Book newbook,int id,String filepath)throws IOException{
         deleteBookById(filepath,id);
-        writeYamlToFileWithAppend(newbook,filepath);
+        writeToFile(newbook,filepath);
     }
 }
