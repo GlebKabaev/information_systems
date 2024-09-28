@@ -26,10 +26,11 @@ public class App {
         //     e.printStackTrace();
         // }
         try {
-           String outputFilePath = "/home/gleb/java/spring7AOP/demo/src/main/java/com/is/books.json"; // путь для записи нового JSON-файла
-            // Book book = new Book(0,"Cle Code", "Robert Martin", "Programming", 10, 30.0, 4.99);
+           //String outputFilePath = "/home/gleb/java/spring7AOP/demo/src/main/java/com/is/books.json"; // путь для записи нового JSON-файла
+           String outputFilePath = "/home/gleb/java/spring7AOP/demo/src/main/java/com/is/books.yaml";
+             Book book = new Book(0,"Cle Code", "Robert Martin", "Programming", 10, 30.0, 4.99);
            // Book book2 = new Book(1,"Cle Code", "Robert Martin", "Programming",1, 30.3, 4.4);
-            // Book book3 = new Book(3,"War and peace", "Tolstoy", "Drama", 3, 30.4, 4.3);
+             Book book3 = new Book(3,"War and peace", "Tolstoy", "Drama", 3, 30.4, 4.3);
             
             // Book_rep_json.writeJsonToFile2(book, outputFilePath);
             // Book_rep_json.writeJsonToFile2(book2, outputFilePath);
@@ -41,7 +42,11 @@ public class App {
             // System.out.println(Book_rep_json.getBookById(outputFilePath,1));
             //Book_rep_json.replacement(book2,0,outputFilePath);
             //Book_rep_json.sortBooksByTitle(outputFilePath);
-            System.out.println( Book_rep_json.getCount(outputFilePath));
+            //System.out.println( Book_rep_json.getCount(outputFilePath));
+            //System.out.println(Book_rep_yaml.readYamlFromFile(outputFilePath));
+            //System.out.println(Book_rep_yaml.getCount(outputFilePath));
+            Book_rep_yaml.sortBooksByTitle(outputFilePath);
+            //Book_rep_yaml.replacement(book3,3,outputFilePath);
         } catch (IOException e) {
             e.printStackTrace();
         }

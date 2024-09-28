@@ -1,0 +1,32 @@
+-
+  id: 0
+  title: Cle Code
+  author: Robert Martin
+  genere: Programming
+  quantity: 10
+  depositAmount: 30.0
+  rentalCost: 4.99
+-
+  id: 3
+  title: War and peace
+  author: Tolstoy
+  genere: Drama
+  quantity: 3
+  depositAmount: 30.4
+  rentalCost: 4.3
+-
+  id: 1
+  title: Война и мир
+  author: Лев Толстой
+  genere: Роман
+  quantity: 10
+  depositAmount: 500.0
+  rentalCost: 50.0
+-
+  id: 2
+  title: Преступление и наказание
+  author: Фёдор Достоевский
+  genere: Роман
+  quantity: 5
+  depositAmount: 300.0
+  rentalCost: 40.0
