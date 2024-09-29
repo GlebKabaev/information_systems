@@ -3,21 +3,30 @@ import java.sql.*;
 
 
 public class Book_rep_DB {
+    private static Book_rep_DB instance;
     private final String url = "jdbc:postgresql://localhost:5432/Library_DB";
     private final String user = "myuser";
     private final String password = "mypassword";
-    public Book_rep_DB() {
+    private Book_rep_DB() {
         try {
             Class.forName("org.postgresql.Driver");
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
     }
+    //получить объект класса
+    public static Book_rep_DB getInstance() {
+        if (instance == null) {
+            instance = new Book_rep_DB();
+        }
+        return instance;
+    }
+    
     // Получить объект по ID
     public Book getBookById(int id){
         String query = "SELECT * FROM Books WHERE id = ?";
         try (Connection conn = DriverManager.getConnection(url, user, password);
-             PreparedStatement stmt = conn.prepareStatement(query)) {
+        PreparedStatement stmt = conn.prepareStatement(query)) {
 
             stmt.setInt(1, id);
             ResultSet rs = stmt.executeQuery();

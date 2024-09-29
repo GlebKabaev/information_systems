@@ -167,7 +167,7 @@ public class Book_rep_json implements Book_rep{
         return formattedJson.toString();
     }
     //замена
-    public  void replacement(Book newbook,int id,String filepath)throws IOException{
+    public  void updateBookById(Book newbook,int id,String filepath)throws IOException{
         deleteBookById(filepath,id);
         writeToFile(newbook,filepath);
     }

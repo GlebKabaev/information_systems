@@ -158,7 +158,7 @@ public class Book_rep_yaml implements Book_rep{
             }
         }
     }
-    public  void replacement(Book newbook,int id,String filepath)throws IOException{
+    public  void updateBookById(Book newbook,int id,String filepath)throws IOException{
         deleteBookById(filepath,id);
         writeToFile(newbook,filepath);
     }
