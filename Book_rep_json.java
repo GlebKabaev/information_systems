@@ -3,10 +3,10 @@ package com.is;
 import java.util.*;
 import java.io.*;
 
-public class Book_rep_json {
+public class Book_rep_json implements Book_rep{
 
     // Чтение JSON из файла
-    public static String readJsonFromFile(String filePath) throws IOException {
+    public static String readFromFile(String filePath) throws IOException {
         StringBuilder jsonContent = new StringBuilder();
         try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
             String line;
@@ -18,7 +18,7 @@ public class Book_rep_json {
     }
 
     // Преобразование строки JSON в объект Book
-    public static Book fromJson(String jsonString) {
+    public  Book toBook(String jsonString) {
         Map<String, String> map = new HashMap<>();
         jsonString = jsonString.replace("{", "").replace("}", "").replace("\"", "");
         String[] pairs = jsonString.split(",");
@@ -40,14 +40,14 @@ public class Book_rep_json {
     }
 
     // Запись JSON в файл
-    public static void writeJsonToFile(Book book, String filePath) throws IOException {
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter(filePath))) {
-            writer.write(book.toJson());
-        }
-    }
+    // public static void writeJsonToFile(Book book, String filePath) throws IOException {
+    //     try (BufferedWriter writer = new BufferedWriter(new FileWriter(filePath))) {
+    //         writer.write(book.toJson());
+    //     }
+    // }
 
     // Запись JSON массива в файл с добавлением новых объектов
-    public static void writeJsonToFile2(Book book, String filePath) throws IOException {
+    public static void writeToFile(Book book, String filePath) throws IOException {
         File file = new File(filePath);
         List<String> lines = new ArrayList<>();
         StringBuilder sb = new StringBuilder();
@@ -81,8 +81,8 @@ public class Book_rep_json {
     }
 
     // Получение объекта Book по ID из JSON файла
-    public static Book getBookById(String filePath, int targetId) throws IOException {
-        String jsonString = readJsonFromFile(filePath);
+    public  Book getBookById(String filePath, int targetId) throws IOException {
+        String jsonString = readFromFile(filePath);
         jsonString = jsonString.trim().replaceAll("^\\[|\\]$", "");  // Убираем скобки
 
         String[] jsonObjects = jsonString.split("(?<=\\}),");
@@ -90,7 +90,7 @@ public class Book_rep_json {
         // Перебираем объекты и возвращаем нужный по ID
         for (String jsonObject : jsonObjects) {
             jsonObject = jsonObject.trim();
-            Map<String, String> map = parseJsonToMap(jsonObject);
+            Map<String, String> map = toMap(jsonObject);
 
             int id = Integer.parseInt(map.get("id"));
             if (id == targetId) {
@@ -104,8 +104,8 @@ public class Book_rep_json {
     }
 
     // Удаление книги по ID из JSON файла
-    public static void deleteBookById(String filePath, int targetId) throws IOException {
-        String jsonString = readJsonFromFile(filePath);
+    public  void deleteBookById(String filePath, int targetId) throws IOException {
+        String jsonString = readFromFile(filePath);
         jsonString = jsonString.trim().replaceAll("^\\[|\\]$", "");  // Убираем скобки
 
         String[] jsonObjects = jsonString.split("(?<=\\}),");
@@ -117,7 +117,7 @@ public class Book_rep_json {
         // Перебираем объекты и исключаем нужный ID
         for (String jsonObject : jsonObjects) {
             jsonObject = jsonObject.trim();
-            Map<String, String> map = parseJsonToMap(jsonObject);
+            Map<String, String> map = toMap(jsonObject);
 
             int id = Integer.parseInt(map.get("id"));
             if (id != targetId) {
@@ -142,7 +142,7 @@ public class Book_rep_json {
     }
 
     // Преобразование строки JSON в map
-    private static Map<String, String> parseJsonToMap(String jsonObject) {
+    private static Map<String, String> toMap(String jsonObject) {
         Map<String, String> map = new HashMap<>();
         String[] pairs = jsonObject.replace("{", "").replace("}", "").replace("\"", "").split(",");
         for (String pair : pairs) {
@@ -167,13 +167,13 @@ public class Book_rep_json {
         return formattedJson.toString();
     }
     //замена
-    public static void replacement(Book newbook,int id,String filepath)throws IOException{
+    public  void replacement(Book newbook,int id,String filepath)throws IOException{
         deleteBookById(filepath,id);
-        writeJsonToFile2(newbook,filepath);
+        writeToFile(newbook,filepath);
     }
     // Сортировка книг по полю title
-public static void sortBooksByTitle(String filePath) throws IOException {
-    String jsonString = readJsonFromFile(filePath);
+public  void sortBooksByTitle(String filePath) throws IOException {
+    String jsonString = readFromFile(filePath);
     jsonString = jsonString.trim().replaceAll("^\\[|\\]$", "");  // Убираем квадратные скобки
     
     String[] jsonObjects = jsonString.split("(?<=\\}),");
@@ -182,7 +182,7 @@ public static void sortBooksByTitle(String filePath) throws IOException {
     // Преобразуем каждый JSON объект в объект Book
     for (String jsonObject : jsonObjects) {
         jsonObject = jsonObject.trim();
-        Book book = fromJson(jsonObject);
+        Book book = toBook(jsonObject);
         bookList.add(book);
     }
 
@@ -205,8 +205,8 @@ public static void sortBooksByTitle(String filePath) throws IOException {
     }
 }
 // Подсчет количества объектов (книг) в JSON файле
-public static int getCount(String filePath) throws IOException {
-    String jsonString = readJsonFromFile(filePath);
+public  int getCount(String filePath) throws IOException {
+    String jsonString = readFromFile(filePath);
     jsonString = jsonString.trim().replaceAll("^\\[|\\]$", "");  // Убираем квадратные скобки
 
     // Если файл пуст или содержит только пустые скобки

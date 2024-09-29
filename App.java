@@ -1,5 +1,6 @@
 package com.is;
 import java.io.IOException;
+import com.is.*;
 public class App {
     public static void main(String[] args) {
         // Book book1 = new Book("Aurora","Michel de Port","Dramma",2,2.33,0.5);
@@ -25,12 +26,12 @@ public class App {
         // } catch (IOException e) {
         //     e.printStackTrace();
         // }
-        try {
+        // try {
            //String outputFilePath = "/home/gleb/java/spring7AOP/demo/src/main/java/com/is/books.json"; // путь для записи нового JSON-файла
-           String outputFilePath = "/home/gleb/java/spring7AOP/demo/src/main/java/com/is/books.yaml";
-             Book book = new Book(0,"Cle Code", "Robert Martin", "Programming", 10, 30.0, 4.99);
-           // Book book2 = new Book(1,"Cle Code", "Robert Martin", "Programming",1, 30.3, 4.4);
-             Book book3 = new Book(3,"War and peace", "Tolstoy", "Drama", 3, 30.4, 4.3);
+            //  String outputFilePath = "/home/gleb/java/spring7AOP/demo/src/main/java/com/is/books.yaml";
+            //   Book book = new Book(4,"Cle Code", "Robert Martin", "Programming", 10, 30.0, 4.99);
+            // Book book2 = new Book(1,"Cle Code", "Robert Martin", "Programming",1, 30.3, 4.4);
+              Book book3 = new Book(3,"War and peace", "Tolstoy", "Drama", 3, 30.4, 4.3);
             
             // Book_rep_json.writeJsonToFile2(book, outputFilePath);
             // Book_rep_json.writeJsonToFile2(book2, outputFilePath);
@@ -45,11 +46,15 @@ public class App {
             //System.out.println( Book_rep_json.getCount(outputFilePath));
             //System.out.println(Book_rep_yaml.readYamlFromFile(outputFilePath));
             //System.out.println(Book_rep_yaml.getCount(outputFilePath));
-            Book_rep_yaml book_rep_yaml = new Book_rep_yaml();
-            book_rep_yaml.sortBooksByTitle(outputFilePath);
+            // Book_rep_yaml book_rep_yaml = new Book_rep_yaml();
+            // book_rep_yaml.sortBooksByTitle(outputFilePath);
             //Book_rep_yaml.replacement(book3,3,outputFilePath);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+            
+        // } catch (IOException e) {
+        //     e.printStackTrace();
+        // }
+        Book_rep_DB bd=new Book_rep_DB();
+        
+        System.out.println(bd.getCount());
     }
 }
