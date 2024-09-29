@@ -9,4 +9,5 @@ public interface Book_rep{
     public abstract int getCount(String filePath) throws IOException;
     public abstract void sortBooksByTitle(String filePath) throws IOException;
     public abstract void updateBookById(Book newbook,int id,String filepath)throws IOException;
+    public abstract void writeToFile(Book book, String filePath) throws IOException;
 }

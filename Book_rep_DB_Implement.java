@@ -39,6 +39,11 @@ public class Book_rep_DB_Implement implements Book_rep{
         
     }
     @Override
+    public void writeToFile(Book book, String filePath) throws IOException{
+        throw new UnsupportedOperationException("Not implemented");
+        
+    }
+    @Override
     public void updateBookById(Book newbook, int id, String filePath) throws IOException {
         
         db.updateBookById(id, newbook);

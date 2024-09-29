@@ -47,7 +47,7 @@ public class Book_rep_json implements Book_rep{
     // }
 
     // Запись JSON массива в файл с добавлением новых объектов
-    public static void writeToFile(Book book, String filePath) throws IOException {
+    public  void writeToFile(Book book, String filePath) throws IOException {
         File file = new File(filePath);
         List<String> lines = new ArrayList<>();
         StringBuilder sb = new StringBuilder();

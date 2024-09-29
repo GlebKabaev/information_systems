@@ -57,7 +57,7 @@ public class Book_rep_yaml implements Book_rep{
     // }
 
     // Запись YAML массива в файл с добавлением новых объектов
-    public static void writeToFile(Book book, String filePath) throws IOException {
+    public  void writeToFile(Book book, String filePath) throws IOException {
         List<Map<String, String>> yamlContent = readFromFile(filePath);
         yamlContent.add(toMap(book));
 
