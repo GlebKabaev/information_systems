@@ -20,7 +20,7 @@ public class App {
         // System.out.println(book); // Output: Book{title='War and Peace', author='Leo Tolstoy', genere='Classic'}
         // try {
         //     // Чтение содержимого JSON-файла
-        //     String filePath = "/home/gleb/java/spring7AOP/demo/src/main/java/com/is/book.json"; // Укажи путь к твоему файлу
+            //  String filePath = "/home/gleb/java/spring7AOP/demo/src/main/java/com/is/book.json"; // Укажи путь к твоему файлу
         //     String jsonContent = Book_rep_json.readJsonFromFile(filePath);
 
         //     // Парсинг содержимого JSON-файла в объект Book
@@ -31,9 +31,9 @@ public class App {
         //     e.printStackTrace();
         // }
         // try {
-           //String outputFilePath = "/home/gleb/java/spring7AOP/demo/src/main/java/com/is/books.json"; // путь для записи нового JSON-файла
+           String outputFilePath = "/home/gleb/java/spring7AOP/demo/src/main/java/com/is/books.json"; // путь для записи нового JSON-файла
             //  String outputFilePath = "/home/gleb/java/spring7AOP/demo/src/main/java/com/is/books.yaml";
-            //   Book book = new Book(4,"Cle Code", "Robert Martin", "Programming", 10, 30.0, 4.99);
+            //    Book book = new Book(4,"Clean Code", "Robert Martin", "Programming", 10, 30.0, 4.99);
             // Book book2 = new Book(1,"Cle Code", "Robert Martin", "Programming",1, 30.3, 4.4);
             //   Book book3 = new Book(3,"War and peace", "Tolstoy", "Drama", 3, 30.4, 4.3);
             
@@ -57,9 +57,20 @@ public class App {
         // } catch (IOException e) {
         //     e.printStackTrace();
         // }
-        Book_rep_DB bd= Book_rep_DB.getInstance();
+        // Book_rep_DB bd= Book_rep_DB.getInstance();
+        Book_rep_json json= new Book_rep_json();
         
-        System.out.println(bd.getCount());
         
+    try {
+        // for (int i=5;i<30;i++){
+            
+        //     Book book = new Book(i,"Clean Code", "Robert Martin", "Programming", 10, 30.0, 4.99);
+        //     json.writeToFile(book, outputFilePath);
+        // }
+         json.get_k_n_shortList2(outputFilePath,2,10);
+    //    System.out.println( json.getCount(outputFilePath));
+    } catch (IOException e) {
+             e.printStackTrace();
+    }
     }
 }

@@ -3,7 +3,7 @@ package com.is;
 import java.io.IOException;
 
 public class Book_rep_DB_Implement implements Book_rep{
-    Book_rep_DB db =Book_rep_DB.getInstance();
+    private Book_rep_DB db =Book_rep_DB.getInstance();
     @Override
     public Book getBookById(String filePath, int targetId) throws IOException {
         
@@ -12,6 +12,7 @@ public class Book_rep_DB_Implement implements Book_rep{
     public Book getBookById( int targetId) throws IOException {
         
         return db.getBookById(targetId);
+
     }
     
     @Override
@@ -33,16 +34,8 @@ public class Book_rep_DB_Implement implements Book_rep{
        
         return db.getCount();
     }
-    @Override
-    public void sortBooksByTitle(String filePath) throws IOException {
-        throw new UnsupportedOperationException("Not implemented");
-        
-    }
-    @Override
-    public void writeToFile(Book book, String filePath) throws IOException{
-        throw new UnsupportedOperationException("Not implemented");
-        
-    }
+    
+   
     @Override
     public void updateBookById(Book newbook, int id, String filePath) throws IOException {
         
