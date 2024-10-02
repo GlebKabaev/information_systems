@@ -1,5 +1,8 @@
 package com.is;
 import java.io.IOException;
+
+
+import java.util.List;
 import com.is.*;
 public class App {
     public static void main(String[] args) {
@@ -67,7 +70,10 @@ public class App {
         //     Book book = new Book(i,"Clean Code", "Robert Martin", "Programming", 10, 30.0, 4.99);
         //     json.writeToFile(book, outputFilePath);
         // }
-         json.get_k_n_shortList2(outputFilePath,2,10);
+         List<ShortBook> page=json.get_k_n_shortList2(outputFilePath,1,15);
+         for(ShortBook book:page){
+            System.out.println(book.toString());
+         }
     //    System.out.println( json.getCount(outputFilePath));
     } catch (IOException e) {
              e.printStackTrace();

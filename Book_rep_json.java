@@ -234,7 +234,7 @@ public  int getCount(String filePath) throws IOException {
     System.out.println(jsonString);  
     //return null;
  }
- public List<List<ShortBook>> get_k_n_shortList2(String filePath,int k,int n)throws IOException {
+ public List<ShortBook> get_k_n_shortList2(String filePath,int k,int n)throws IOException {
     double doubleN=n;
     double doubleK=k;
     String jsonString= readFromFile(filePath);
@@ -247,10 +247,14 @@ public  int getCount(String filePath) throws IOException {
     }
     double countPages=Math.ceil(jsonObjectsLength/doubleN);
     List<ShortBook> tempList = new ArrayList<ShortBook>();
+    List<ShortBook> returnList = new ArrayList<ShortBook>();
     List<List<ShortBook>> pageList = new ArrayList<List<ShortBook>>();
-    for(double i=0;i<countPages;i++){
+    for(int i=0;i<countPages;i++){
         for(int j=0;j<n;j++){
-            try{
+            try{if(i==k){
+                returnList.add(bookList.get(0));
+            }
+              
             tempList.add(bookList.remove(0));
             }catch(IndexOutOfBoundsException e){
                 break;
@@ -259,7 +263,8 @@ public  int getCount(String filePath) throws IOException {
         pageList.add(tempList);
         tempList=new ArrayList<ShortBook>();
     }
-    return pageList;
+
+    return returnList;
 
 
  }
