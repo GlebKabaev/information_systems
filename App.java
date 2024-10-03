@@ -34,9 +34,9 @@ public class App {
         //     e.printStackTrace();
         // }
         // try {
-           String outputFilePath = "/home/gleb/java/spring7AOP/demo/src/main/java/com/is/books.json"; // путь для записи нового JSON-файла
-            //  String outputFilePath = "/home/gleb/java/spring7AOP/demo/src/main/java/com/is/books.yaml";
-            //    Book book = new Book(4,"Clean Code", "Robert Martin", "Programming", 10, 30.0, 4.99);
+           //String outputFilePath = "/home/gleb/java/spring7AOP/demo/src/main/java/com/is/books.json"; // путь для записи нового JSON-файла
+            String outputFilePath = "/home/gleb/java/spring7AOP/demo/src/main/java/com/is/books.yaml";
+           // Book book = new Book(4,"Clean Code", "Robert Martin", "Programming", 10, 30.0, 4.99);
             // Book book2 = new Book(1,"Cle Code", "Robert Martin", "Programming",1, 30.3, 4.4);
             //   Book book3 = new Book(3,"War and peace", "Tolstoy", "Drama", 3, 30.4, 4.3);
             
@@ -61,8 +61,8 @@ public class App {
         //     e.printStackTrace();
         // }
         // Book_rep_DB bd= Book_rep_DB.getInstance();
-        Book_rep_json json= new Book_rep_json();
-        
+        // Book_rep_json json= new Book_rep_json();
+         Book_rep_yaml yaml= new Book_rep_yaml();
         
     try {
         // for (int i=5;i<30;i++){
@@ -70,13 +70,18 @@ public class App {
         //     Book book = new Book(i,"Clean Code", "Robert Martin", "Programming", 10, 30.0, 4.99);
         //     json.writeToFile(book, outputFilePath);
         // }
-         List<ShortBook> page=json.get_k_n_shortList2(outputFilePath,1,15);
+         List<ShortBook> page=yaml.get_k_n_shortList(outputFilePath,1,15);
          for(ShortBook book:page){
             System.out.println(book.toString());
          }
+        // for (int i=4;i<40;i++){
+        //     Book book = new Book(i,"War and peace", "Tolstoy", "Drama", 3, 30.4, 4.3);
+        //     yaml.writeToFile(book,outputFilePath);
+        // }
     //    System.out.println( json.getCount(outputFilePath));
     } catch (IOException e) {
              e.printStackTrace();
     }
+    //System.out.println(Book_rep_yaml.yamlToShortBook(Book_rep_yaml.test(book)));
     }
 }

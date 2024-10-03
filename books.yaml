@@ -1,32 +1,320 @@
 -
-  id: 0
-  title: Cle Code
-  author: Robert Martin
-  genere: Programming
-  quantity: 10
   depositAmount: 30.0
   rentalCost: 4.99
+  quantity: 10
+  author: Robert Martin
+  id: 0
+  title: Cle Code
+  genere: Programming
 -
-  id: 3
-  title: War and peace
-  author: Tolstoy
-  genere: Drama
-  quantity: 3
   depositAmount: 30.4
   rentalCost: 4.3
+  quantity: 3
+  author: Tolstoy
+  id: 3
+  title: War and peace
+  genere: Drama
 -
-  id: 1
-  title: Война и мир
-  author: Лев Толстой
-  genere: Роман
-  quantity: 10
   depositAmount: 500.0
   rentalCost: 50.0
--
-  id: 2
-  title: Преступление и наказание
-  author: Фёдор Достоевский
+  quantity: 10
+  author: Лев Толстой
+  id: 1
+  title: Война и мир
   genere: Роман
-  quantity: 5
+-
   depositAmount: 300.0
   rentalCost: 40.0
+  quantity: 5
+  author: Фёдор Достоевский
+  id: 2
+  title: Преступление и наказание
+  genere: Роман
+-
+  depositAmount: 30.4
+  rentalCost: 4.3
+  quantity: 3
+  author: Tolstoy
+  id: 4
+  title: War and peace
+  genere: Drama
+-
+  depositAmount: 30.4
+  rentalCost: 4.3
+  quantity: 3
+  author: Tolstoy
+  id: 5
+  title: War and peace
+  genere: Drama
+-
+  depositAmount: 30.4
+  rentalCost: 4.3
+  quantity: 3
+  author: Tolstoy
+  id: 6
+  title: War and peace
+  genere: Drama
+-
+  depositAmount: 30.4
+  rentalCost: 4.3
+  quantity: 3
+  author: Tolstoy
+  id: 7
+  title: War and peace
+  genere: Drama
+-
+  depositAmount: 30.4
+  rentalCost: 4.3
+  quantity: 3
+  author: Tolstoy
+  id: 8
+  title: War and peace
+  genere: Drama
+-
+  depositAmount: 30.4
+  rentalCost: 4.3
+  quantity: 3
+  author: Tolstoy
+  id: 9
+  title: War and peace
+  genere: Drama
+-
+  depositAmount: 30.4
+  rentalCost: 4.3
+  quantity: 3
+  author: Tolstoy
+  id: 10
+  title: War and peace
+  genere: Drama
+-
+  depositAmount: 30.4
+  rentalCost: 4.3
+  quantity: 3
+  author: Tolstoy
+  id: 11
+  title: War and peace
+  genere: Drama
+-
+  depositAmount: 30.4
+  rentalCost: 4.3
+  quantity: 3
+  author: Tolstoy
+  id: 12
+  title: War and peace
+  genere: Drama
+-
+  depositAmount: 30.4
+  rentalCost: 4.3
+  quantity: 3
+  author: Tolstoy
+  id: 13
+  title: War and peace
+  genere: Drama
+-
+  depositAmount: 30.4
+  rentalCost: 4.3
+  quantity: 3
+  author: Tolstoy
+  id: 14
+  title: War and peace
+  genere: Drama
+-
+  depositAmount: 30.4
+  rentalCost: 4.3
+  quantity: 3
+  author: Tolstoy
+  id: 15
+  title: War and peace
+  genere: Drama
+-
+  depositAmount: 30.4
+  rentalCost: 4.3
+  quantity: 3
+  author: Tolstoy
+  id: 16
+  title: War and peace
+  genere: Drama
+-
+  depositAmount: 30.4
+  rentalCost: 4.3
+  quantity: 3
+  author: Tolstoy
+  id: 17
+  title: War and peace
+  genere: Drama
+-
+  depositAmount: 30.4
+  rentalCost: 4.3
+  quantity: 3
+  author: Tolstoy
+  id: 18
+  title: War and peace
+  genere: Drama
+-
+  depositAmount: 30.4
+  rentalCost: 4.3
+  quantity: 3
+  author: Tolstoy
+  id: 19
+  title: War and peace
+  genere: Drama
+-
+  depositAmount: 30.4
+  rentalCost: 4.3
+  quantity: 3
+  author: Tolstoy
+  id: 20
+  title: War and peace
+  genere: Drama
+-
+  depositAmount: 30.4
+  rentalCost: 4.3
+  quantity: 3
+  author: Tolstoy
+  id: 21
+  title: War and peace
+  genere: Drama
+-
+  depositAmount: 30.4
+  rentalCost: 4.3
+  quantity: 3
+  author: Tolstoy
+  id: 22
+  title: War and peace
+  genere: Drama
+-
+  depositAmount: 30.4
+  rentalCost: 4.3
+  quantity: 3
+  author: Tolstoy
+  id: 23
+  title: War and peace
+  genere: Drama
+-
+  depositAmount: 30.4
+  rentalCost: 4.3
+  quantity: 3
+  author: Tolstoy
+  id: 24
+  title: War and peace
+  genere: Drama
+-
+  depositAmount: 30.4
+  rentalCost: 4.3
+  quantity: 3
+  author: Tolstoy
+  id: 25
+  title: War and peace
+  genere: Drama
+-
+  depositAmount: 30.4
+  rentalCost: 4.3
+  quantity: 3
+  author: Tolstoy
+  id: 26
+  title: War and peace
+  genere: Drama
+-
+  depositAmount: 30.4
+  rentalCost: 4.3
+  quantity: 3
+  author: Tolstoy
+  id: 27
+  title: War and peace
+  genere: Drama
+-
+  depositAmount: 30.4
+  rentalCost: 4.3
+  quantity: 3
+  author: Tolstoy
+  id: 28
+  title: War and peace
+  genere: Drama
+-
+  depositAmount: 30.4
+  rentalCost: 4.3
+  quantity: 3
+  author: Tolstoy
+  id: 29
+  title: War and peace
+  genere: Drama
+-
+  depositAmount: 30.4
+  rentalCost: 4.3
+  quantity: 3
+  author: Tolstoy
+  id: 30
+  title: War and peace
+  genere: Drama
+-
+  depositAmount: 30.4
+  rentalCost: 4.3
+  quantity: 3
+  author: Tolstoy
+  id: 31
+  title: War and peace
+  genere: Drama
+-
+  depositAmount: 30.4
+  rentalCost: 4.3
+  quantity: 3
+  author: Tolstoy
+  id: 32
+  title: War and peace
+  genere: Drama
+-
+  depositAmount: 30.4
+  rentalCost: 4.3
+  quantity: 3
+  author: Tolstoy
+  id: 33
+  title: War and peace
+  genere: Drama
+-
+  depositAmount: 30.4
+  rentalCost: 4.3
+  quantity: 3
+  author: Tolstoy
+  id: 34
+  title: War and peace
+  genere: Drama
+-
+  depositAmount: 30.4
+  rentalCost: 4.3
+  quantity: 3
+  author: Tolstoy
+  id: 35
+  title: War and peace
+  genere: Drama
+-
+  depositAmount: 30.4
+  rentalCost: 4.3
+  quantity: 3
+  author: Tolstoy
+  id: 36
+  title: War and peace
+  genere: Drama
+-
+  depositAmount: 30.4
+  rentalCost: 4.3
+  quantity: 3
+  author: Tolstoy
+  id: 37
+  title: War and peace
+  genere: Drama
+-
+  depositAmount: 30.4
+  rentalCost: 4.3
+  quantity: 3
+  author: Tolstoy
+  id: 38
+  title: War and peace
+  genere: Drama
+-
+  depositAmount: 30.4
+  rentalCost: 4.3
+  quantity: 3
+  author: Tolstoy
+  id: 39
+  title: War and peace
+  genere: Drama

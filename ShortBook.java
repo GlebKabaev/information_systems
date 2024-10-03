@@ -1,5 +1,7 @@
 package com.is;
 
+
+
 public class ShortBook {
     private int id;
     private String title;
@@ -59,7 +61,7 @@ public class ShortBook {
             }
         }
     }
-
+    
     //Getters and setters
     public String getTitle() {
         return title;

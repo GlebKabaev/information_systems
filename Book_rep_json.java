@@ -221,22 +221,10 @@ public  int getCount(String filePath) throws IOException {
     // Возвращаем количество объектов
     return jsonObjects.length;
 }
- public void get_k_n_shortList(String filePath,int k,int n)throws IOException {
-    
 
-
-
-    String jsonString= readFromFile(filePath);
-    ShortBook shortBook = new ShortBook(jsonString);
-    jsonString=shortBook.toString();
-    jsonString = jsonString.trim().replaceAll("^\\[|\\]$", "");
-    String[] jsonObjects = jsonString.replace("},","}},").split("},");//мое гениальное решение
-    System.out.println(jsonString);  
-    //return null;
- }
- public List<ShortBook> get_k_n_shortList2(String filePath,int k,int n)throws IOException {
+ public List<ShortBook> get_k_n_shortList(String filePath,int k,int n)throws IOException {
     double doubleN=n;
-    double doubleK=k;
+    // double doubleK=k;
     String jsonString= readFromFile(filePath);
     jsonString = jsonString.trim().replaceAll("^\\[|\\]$", "");//убираем скобки
     String[] jsonObjects = jsonString.replace("},","}},").split("},");//мое гениальное решение
@@ -245,6 +233,7 @@ public  int getCount(String filePath) throws IOException {
     for(int i=0; i<jsonObjects.length; i++){
         bookList.add(new ShortBook(jsonObjects[i]) );   
     }
+
     double countPages=Math.ceil(jsonObjectsLength/doubleN);
     List<ShortBook> tempList = new ArrayList<ShortBook>();
     List<ShortBook> returnList = new ArrayList<ShortBook>();

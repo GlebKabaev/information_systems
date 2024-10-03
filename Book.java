@@ -58,6 +58,7 @@ public class Book extends ShortBook {
     
 }
 
+    
     //Getters and setters
     
     public int getQuantity() {
