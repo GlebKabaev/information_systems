@@ -167,50 +167,7 @@ public class Book_rep_yaml implements Book_rep{
         deleteBookById(filepath,id);
         writeToFile(newbook,filepath);
     }
-    public List<ShortBook> get_k_n_shortList(String filePath, int k, int n) throws IOException {
-    // Чтение строк из файла
-    List<String> lines = Files.readAllLines(Paths.get(filePath));
     
-    // Обработка строк, чтобы собрать YAML объекты
-    List<String> yamlObjects = new ArrayList<>();
-    StringBuilder currentObject = new StringBuilder();
-    for (String line : lines) {
-        // Считываем, пока не найдем пустую строку, разделяющую объекты
-        if (line.trim().isEmpty()) {
-            if (currentObject.length() > 0) {
-                yamlObjects.add(currentObject.toString().trim());
-                currentObject.setLength(0);
-            }
-        } else {
-            currentObject.append(line).append("\n");
-        }
-    }
-    // Добавляем последний объект, если он есть
-    if (currentObject.length() > 0) {
-        yamlObjects.add(currentObject.toString().trim());
-    }
-
-    // Создаем список объектов ShortBook из YAML объектов
-    List<ShortBook> bookList = new ArrayList<>();
-    for (String yamlObject : yamlObjects) {
-        bookList.add(yamlToShortBook(yamlObject));
-    }
-
-    // Определяем количество страниц
-    int totalPages = (int) Math.ceil((double) bookList.size() / n);
-    
-    // Проверка на корректность номера страницы
-    if (k < 1 || k > totalPages) {
-        throw new IllegalArgumentException("Некорректный номер страницы: " + k);
-    }
-
-    // Вычисление начального и конечного индекса для извлечения элементов
-    int startIndex = (k - 1) * n;
-    int endIndex = Math.min(startIndex + n, bookList.size());
-
-    // Возвращаем список объектов, находящихся на странице k
-    return bookList.subList(startIndex, endIndex);
-}
 public static ShortBook yamlToShortBook(String yamlString){
     
 
@@ -248,4 +205,36 @@ public static ShortBook yamlToShortBook(String yamlString){
     return new ShortBook(id, title,author,genere);
 
 }
+public List<ShortBook> get_k_n_shortList(String filePath, int k, int n) throws IOException {
+    // Чтение содержимого YAML файла
+    List<Map<String, String>> yamlContent = readFromFile(filePath);
+
+    // Преобразование содержимого YAML в список ShortBook
+    List<ShortBook> bookList = new ArrayList<>();
+    for (Map<String, String> yamlMap : yamlContent) {
+        bookList.add(yamlToShortBook(mapToYamlString(yamlMap)));
+    }
+
+    // Определение начального и конечного индекса для страницы k
+    int startIndex = k * n;
+    int endIndex = Math.min(startIndex + n, bookList.size());
+
+    // Возвращаем подсписок, соответствующий странице k
+    if (startIndex < bookList.size()) {
+        return bookList.subList(startIndex, endIndex);
+    } else {
+        return new ArrayList<>(); // Пустой список, если страница выходит за пределы
+    }
+}
+
+// Преобразование Map в YAML строку для метода yamlToShortBook
+private String mapToYamlString(Map<String, String> yamlMap) {
+    StringBuilder yamlBuilder = new StringBuilder();
+    yamlBuilder.append("-\n");
+    for (Map.Entry<String, String> entry : yamlMap.entrySet()) {
+        yamlBuilder.append("  ").append(entry.getKey()).append(": ").append(entry.getValue()).append("\n");
+    }
+    return yamlBuilder.toString();
+}
+
 }

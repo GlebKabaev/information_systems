@@ -70,7 +70,7 @@ public class App {
         //     Book book = new Book(i,"Clean Code", "Robert Martin", "Programming", 10, 30.0, 4.99);
         //     json.writeToFile(book, outputFilePath);
         // }
-         List<ShortBook> page=yaml.get_k_n_shortList(outputFilePath,1,15);
+         List<ShortBook> page=yaml.get_k_n_shortList(outputFilePath,0,13);
          for(ShortBook book:page){
             System.out.println(book.toString());
          }
