@@ -62,21 +62,25 @@ public class App {
         // }
         // Book_rep_DB bd= Book_rep_DB.getInstance();
         // Book_rep_json json= new Book_rep_json();
-         Book_rep_yaml yaml= new Book_rep_yaml();
-        
+        Book_rep_yaml yaml= new Book_rep_yaml();
+        Book_rep_DB db = Book_rep_DB.getInstance();
     try {
         // for (int i=5;i<30;i++){
             
         //     Book book = new Book(i,"Clean Code", "Robert Martin", "Programming", 10, 30.0, 4.99);
         //     json.writeToFile(book, outputFilePath);
         // }
-         List<ShortBook> page=yaml.get_k_n_shortList(outputFilePath,0,13);
+        List<ShortBook> page=db.get_k_n_shortList(2,10);
          for(ShortBook book:page){
             System.out.println(book.toString());
-         }
+        }
+        //  List<ShortBook> page=yaml.get_k_n_shortList(outputFilePath,0,13);
+        //  for(ShortBook book:page){
+        //     System.out.println(book.toString());
+        //  }
         // for (int i=4;i<40;i++){
         //     Book book = new Book(i,"War and peace", "Tolstoy", "Drama", 3, 30.4, 4.3);
-        //     yaml.writeToFile(book,outputFilePath);
+        //     db.addBook(book);
         // }
     //    System.out.println( json.getCount(outputFilePath));
     } catch (IOException e) {

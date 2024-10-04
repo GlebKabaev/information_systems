@@ -1,5 +1,8 @@
 package com.is;
 import java.sql.*;
+import java.util.*;
+import java.io.*;
+
 
 
 public class Book_rep_DB {
@@ -40,6 +43,28 @@ public class Book_rep_DB {
                         rs.getInt("quantity"),
                         rs.getDouble("depositAmount"),
                         rs.getDouble("rentalCost")
+                );
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+    public ShortBook getShortBookById(int id){
+        String query = "SELECT * FROM Books WHERE id = ?";
+        try (Connection conn = DriverManager.getConnection(url, user, password);
+        PreparedStatement stmt = conn.prepareStatement(query)) {
+
+            stmt.setInt(1, id);
+            ResultSet rs = stmt.executeQuery();
+
+            if (rs.next()) {
+                return new ShortBook(
+                        rs.getInt("id"),
+                        rs.getString("title"),
+                        rs.getString("author"),
+                        rs.getString("genere")
+                        
                 );
             }
         } catch (SQLException e) {
@@ -113,5 +138,16 @@ public class Book_rep_DB {
             e.printStackTrace();
         }
         return 0; // Если произошла ошибка, возвращаем 0
+    }
+    public List<ShortBook> get_k_n_shortList(int k, int n) throws IOException {
+        int startIndex = k * n;
+        int endIndex = Math.min(startIndex + n, getCount());
+        List<ShortBook> shortBooks = new ArrayList<>();
+        for(int i = startIndex; i < endIndex; i++) {
+            shortBooks.add(getShortBookById(i));
+        }
+        
+        return shortBooks;
+   
     }
 }
